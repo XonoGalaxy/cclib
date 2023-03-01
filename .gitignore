@@ -39,3 +39,8 @@ Thumbs.db
 # Testing files #
 ######################
 main.c
+main
+
+# Visual Studio Code #
+######################
+.vscode

@@ -8,18 +8,20 @@
  * Split words on a string laid out with camel case pattern
  * One pass string parsing function
  */
-static char** breaks_camel_case_up(char input[])
+static char** break_cc_up(char input[])
 {
-
         // character handler
         char c;
+
         // flags
         int word_list_end = 0;
-        // counter
+
+        // counters
         int idx = 0;
         int word_nb = 0;
         int ch_nb = 0;
-        // cache
+
+        // caches
         int word_list_size; 
         int word_size;
 
@@ -44,12 +46,10 @@ static char** breaks_camel_case_up(char input[])
         // parsing input string
         while (word_list_end != 1)
         {
-
         	// handle character
         	c = input[idx];
 
                 if (isupper(c)) {
-
                     	// handle new word
                     	word_nb++;
                     	// handle character
@@ -113,9 +113,9 @@ static char** breaks_camel_case_up(char input[])
                 }
         };
 
-		// free buffer
+	// free buffer
         free(word);
 
-		// handle output
+	// handle output
         return word_list;
 }

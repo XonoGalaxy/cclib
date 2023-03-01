@@ -8,6 +8,9 @@ Camel Case Pattern Interface Architecture :
     - Line : C string managment -> ccstring.h
     - Line : file managment
 
+Related acronym : 
+    - cc : camel case
+
 TODO: objec-make interface
 TODO: handle off-pattern input
 TODO: normalize output format
