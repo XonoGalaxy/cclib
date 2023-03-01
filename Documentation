@@ -5,5 +5,9 @@ Line : object handling pattern
 
 Camel Case Pattern Interface Architecture : 
 
-    - Line : C string managment
+    - Line : C string managment -> ccstring.h
     - Line : file managment
+
+TODO: objec-make interface
+TODO: handle off-pattern input
+TODO: normalize output format
