@@ -1,0 +1,9 @@
+Camel Case Pattern Interface Architecture Definition :
+
+Interface : C library - Abstraction layer
+Line : object handling pattern
+
+Camel Case Pattern Interface Architecture : 
+
+    - Line : C string managment
+    - Line : file managment
