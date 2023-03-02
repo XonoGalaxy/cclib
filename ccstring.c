@@ -4,11 +4,11 @@
 #include "ctype.h"
 
 /*
- * breaks_camel_case_up() - return broken string up to a word list
+ * break_cc_up() - return broken string up to a word list
  * Split words on a string laid out with camel case pattern
  * One pass string parsing function
  */
-static char** break_cc_up(char input[])
+static int break_cc_up(char *input, char **word_list, int *list_rows)
 {
         // character handler
         char c;
@@ -22,21 +22,9 @@ static char** break_cc_up(char input[])
         int ch_nb = 0;
 
         // caches
-        int word_list_size; 
-        int word_size;
+        int word_list_size = 0; 
+        int word_size = 0;
 
-        // buffer allocation
-        char **word_list;
-        word_list = (char **)malloc(sizeof(char*));
-        if (word_list == NULL) {
-                /*error handling*/
-                printf("error word list allocation\n");
-        }
-        *word_list = (char *)malloc(sizeof(char));
-        if (*word_list == NULL) {
-                /*error handling*/
-                printf("error current word into list allocation\\n");
-        }
         char *word = (char *)malloc(sizeof(char));
         if (word == NULL) {
                 /*error handling*/
@@ -89,13 +77,15 @@ static char** break_cc_up(char input[])
                     	    word_list_size += sizeof(word[q]);
                     	}
 
+						//printf("word : %s\n", word);
+
                     	// word list buffering
-                    	word_list = (char **)realloc(word_list, word_list_size * sizeof(char));
+                    	word_list = (char **)realloc(word_list, word_list_size * sizeof(char*));
                     	if (word_list == NULL) {
                     	        /*error handling*/
                     	        printf("error word list re-allocation\n");
                     	}
-                    	word_list[word_nb-1] = (char *)realloc(word_list[word_nb-1], word_size * sizeof(char));
+                    	word_list[word_nb-1] = (char *)realloc(word_list[word_nb-1], (strlen(word)+1) * sizeof(char));
                     	if (word_list[word_nb-1] == NULL) {
                     	        /*error handling*/
                     	        printf("error current word into list re-allocation\n");
@@ -114,8 +104,10 @@ static char** break_cc_up(char input[])
         };
 
 	// free buffer
-        free(word);
+    free(word);
 
-	// handle output
-        return word_list;
+	// handle word list row elements
+	*list_rows = word_nb;
+
+    return 0;
 }
