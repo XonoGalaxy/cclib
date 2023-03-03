@@ -22,9 +22,29 @@ Interface format
         args are passed by value
         return state value : error, true, false
 
+/!\ Library development /!\
+
 TODO: objec-make interface
 TODO: handle off-pattern input
 TODO: normalize output format
 TODO: reformat function interfacing - my_function(*input, *output, args, ...);
 TODO: try to take out intern while loop in break_cc_up algorithm
 TODO: adding kernel functionality through functionality
+TODO: printf format as log
+
+/!\ Library/module deployment /!\
+
+TODO: Format the interface as loadable module in kernel-space
+TODO: Make system call interface
+TODO: Make a function to interact with at least one interrupt handler, one CPU, register
+TODO: Write execution programm as kernel subsystem using the library
+
+/!\ Module configuration /!\
+TODO: Make /proc config file
+TODO: Make sysfs visibility
+
+/!\ Subsystem User interface /!\
+TODO: simple software using system call 
+TODO: Console command pattern - 3 simple command
+TODO: Add all calssic subsystem argument pattern: --help,
+

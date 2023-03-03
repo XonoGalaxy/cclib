@@ -8,8 +8,11 @@
  * Split words on a string laid out with camel case pattern
  * One pass string parsing function
  */
-static int break_cc_up(char *input, char **word_list, int *list_rows)
+static int break_cc_up(char *input, char **word_list, int *word_amount)
 {
+		// handle return
+		int ret = 1;
+
         // character handler
         char c;
 
@@ -29,6 +32,7 @@ static int break_cc_up(char *input, char **word_list, int *list_rows)
         if (word == NULL) {
                 /*error handling*/
                 printf("error word allocation\n");
+				return ret = 0;
         }
 
         // parsing input string
@@ -61,6 +65,7 @@ static int break_cc_up(char *input, char **word_list, int *list_rows)
                     	if (word == NULL) {
                     	        /*error handling*/
                     	        printf("error word re-allocation\n");
+								return ret = 0;
                     	}
 
                     	for(int p = 0; p < word_size - 1; p++) 
@@ -84,11 +89,13 @@ static int break_cc_up(char *input, char **word_list, int *list_rows)
                     	if (word_list == NULL) {
                     	        /*error handling*/
                     	        printf("error word list re-allocation\n");
+								return ret = 0;
                     	}
                     	word_list[word_nb-1] = (char *)realloc(word_list[word_nb-1], (strlen(word)+1) * sizeof(char));
                     	if (word_list[word_nb-1] == NULL) {
                     	        /*error handling*/
                     	        printf("error current word into list re-allocation\n");
+								return ret = 0;
                     	}
 
                     	strcpy(word_list[word_nb-1], word);
@@ -107,7 +114,12 @@ static int break_cc_up(char *input, char **word_list, int *list_rows)
     free(word);
 
 	// handle word list row elements
-	*list_rows = word_nb;
+	*word_amount = word_nb;
+
+    for(int a = 0; a < word_nb; a++)
+    {
+        printf("Broken cc up to output 1: %s\n", word_list[a]);
+    }
 
     return 0;
 }
