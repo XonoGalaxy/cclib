@@ -108,7 +108,7 @@ static int break_cc_up(char *input, char **word_list, int *word_amount)
                 } else if (c == '\0') {
                         word_list_end = 1;
                 }
-        };
+        }
 
 	// free buffer
     free(word);

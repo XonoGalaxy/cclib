@@ -6,7 +6,7 @@ Camel Case Pattern Interface Architecture Definition
 Camel Case Pattern Interface Architecture
 
     Line  : C string managment -> ccstring.h
-    Line  : file managment
+    Line  : file managment     -> ccfile.h
 
 Related acronym
 
@@ -22,8 +22,30 @@ Interface format
         args are passed by value
         return state value : error, true, false
 
-/!\ Library development /!\
+Exclusive data structure 2-step mechanism : "The Progressive Swelling"
 
+    
+    Step 1 : Data entires fill former buffer up with a data block
+                           _____________
+                          | data entry n|                                  ____________
+                          |_____________|                                 |            |
+                          | data entry 1|                                 |            |
+    [data entries] -----> |_____________| ---> [transfer data block] ---> |____________|
+
+    Step 2 : Cleared former buffer give back data block to latter buffer
+
+                           ____________                                   ____________
+                          |            |                                 |            |
+                          |            |                                 |data block 1|
+                          |clearing up |                                 |            |
+    [data entries] -----> |____________| ---> [transfer data block] ---> |____________|
+
+    Repeat 2-step mechanism N times for N data blocks.
+
+
+Tasks planning : 
+
+/!\ Library development /!\
 TODO: objec-make interface
 TODO: handle off-pattern input
 TODO: normalize output format
@@ -31,9 +53,9 @@ TODO: reformat function interfacing - my_function(*input, *output, args, ...);
 TODO: try to take out intern while loop in break_cc_up algorithm
 TODO: adding kernel functionality through functionality
 TODO: printf format as log
+TODO: Use system call such as : open() and write()
 
 /!\ Library/module deployment /!\
-
 TODO: Format the interface as loadable module in kernel-space
 TODO: Make system call interface
 TODO: Make a function to interact with at least one interrupt handler, one CPU, register
@@ -46,5 +68,4 @@ TODO: Make sysfs visibility
 /!\ Subsystem User interface /!\
 TODO: simple software using system call 
 TODO: Console command pattern - 3 simple command
-TODO: Add all calssic subsystem argument pattern: --help,
-
+TODO: Add all calssic subsystem argument pattern: --help
