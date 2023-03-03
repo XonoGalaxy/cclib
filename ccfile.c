@@ -1,23 +1,23 @@
+/**
+    \file       ccfile.c
+    \brief      cc file handling
+    \copyright  © Copyright XONO GALAXY - 2023 - All rights reserved
+    Reproduction, modification and/or use of this document without express written permission of XONO GALAXY is prohibited
+    © Copyright XonoGalaxy - 2023
+    All rights reserved - XONO GALAXY Proprietary Data.
+ **/
+
 #include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
 #include "ctype.h"
 
+
 /*
-    Function for opening a file
-    Function for parsing a the string file
-    Function to break cc word up to a list
-    Function to sort list down to an alphabetic order
-    Function to create new file
-        * specifying path to create new file
-    Function to write back sorted list into new file 
+ * break_file_down() - return error value
+ * Split woven words from input up to output file
+ * Listed words are alphabecically sorted
  */
-
-/* 
-    input   : file 
-    output  : listed woven words
-*/
-
 static int break_cc_file_down(char *in_path, char *out_path) {
 
     // ret val
@@ -129,12 +129,6 @@ static int break_cc_file_down(char *in_path, char *out_path) {
         }
     }
 
-    // word list output
-    for(int a = 0; a < word_nb; a++)
-    {
-        printf("Listed word : %s\n", word_list[a]);
-    }
-
     /* Write back alphbetic listed word into output file */
     for(int a = 0; a < word_nb; a++) 
     {
@@ -147,8 +141,6 @@ static int break_cc_file_down(char *in_path, char *out_path) {
         // jump line
         ch = fputc('\n', outfptr);
     }
-    
-    printf("\n");
 
     // free word buffer
     free(word);

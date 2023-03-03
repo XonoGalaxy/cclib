@@ -1,3 +1,12 @@
+/**
+    \file       ccstring.c
+    \brief      cc string handling
+    \copyright  © Copyright XONO GALAXY - 2023 - All rights reserved
+    Reproduction, modification and/or use of this document without express written permission of XONO GALAXY is prohibited
+    © Copyright XonoGalaxy - 2023
+    All rights reserved - XONO GALAXY Proprietary Data.
+ **/
+
 #include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
