@@ -47,6 +47,7 @@ main
 
 # Git Ignore #
 ######################
+.gitignore
 
 # File Test #
 ######################
